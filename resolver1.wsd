@@ -1,0 +1,43 @@
+@startuml
+interface Diagram
+interface ProtectedCommand
+interface Command
+abstract AbstractPSystem
+abstract SingleLineCommand2
+class TitledDiagram
+class CommandTitle
+class CommandSkinParam
+class CommandSkin
+class UmlDiagram
+class CommandArrow
+class SequenceDiagram
+interface PSystemFactory
+abstract PSystemAbstractFactory
+abstract PSysCommandFactory
+class SequenceDiagramFactory
+abstract Step
+
+Diagram <|.. AbstractPSystem
+Diagram <|.. TitledDiagram
+Diagram <|.. UmlDiagram
+UmlDiagram <|-- SequenceDiagram
+AbstractPSystem <|-- TitledDiagram
+TitledDiagram <|-- UmlDiagram
+CommandTitle <.. TitledDiagram
+CommandSkinParam <.. TitledDiagram
+CommandSkin <.. TitledDiagram
+Command <|.. SingleLineCommand2
+SingleLineCommand2 <|-- CommandTitle
+SingleLineCommand2 <|-- CommandSkinParam
+SingleLineCommand2 <|-- CommandSkin
+SingleLineCommand2 <-- SingleLineCommand2
+SingleLineCommand2 <|-- CommandArrow
+PSystemFactory <|.. PSystemAbstractFactory
+PSystemAbstractFactory <|-- PSysCommandFactory
+PSysCommandFactory <|--SequenceDiagramFactory
+CommandTitle <.. PSysCommandFactory
+CommandArrow <.. PSysCommandFactory
+CommandSkin <.. PSysCommandFactory
+ProtectedCommand <.. AbstractPSystem
+Command <|.. ProtectedCommand
+@enduml
